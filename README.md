@@ -13,8 +13,12 @@ There are 6 test scripts associated to different HTTP verb calls.
 
 Along with these scripts, "test_invalid_post_service.py" is to validate the POST request for invalid end point.
 
+Assumptions: 
+1. The project path is set at "PYTHONPATH"
+2. Install the python packages using pip command
+      - Execute the command : python pip install -r requirement.txt
+
 How to run the script ?
-Assuming, the project path is set at "PYTHONPATH"
 
 Open cmd prompt(Windows) or Terminal(Linux)
 
