@@ -1,0 +1,9 @@
+{
+    "base_url": "https://jsonplaceholder.typicode.com",
+    "get_all_user_endpoint":"/posts",
+    "get_individual_usr_endpoint": "/posts/",
+    "get_invalid_posts_endpoint":"/invalidposts",
+    "post_new_user_endpoint":"/posts",
+    "update_user_details_endpoint": "/posts/",
+    "delete_user_endpoint":"/posts/"
+}
