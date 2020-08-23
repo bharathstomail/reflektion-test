@@ -1,0 +1,4 @@
+pytest-ordering
+pytest
+pathlib
+requests
