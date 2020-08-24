@@ -2,3 +2,4 @@ pytest-ordering
 pytest
 pathlib
 requests
+pytest-html
