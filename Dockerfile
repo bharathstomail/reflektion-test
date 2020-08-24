@@ -1,7 +1,7 @@
 FROM python:3.6-alpine
 
-COPY requirements.txt /
-RUN pip install -r /requirements.txt
+COPY requirement.txt /
+RUN pip install -r /requirement.txt
 
 COPY src/ /app
 WORKDIR /app
