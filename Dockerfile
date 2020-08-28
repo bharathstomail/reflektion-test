@@ -9,5 +9,5 @@ RUN chown root /opt/Project_API
 #COPY src/ /app
 COPY ./src/ /opt/Project_API/src/
 WORKDIR /opt/Project_API/src/
-RUN pip install -r /requirement.txt
+RUN pip install -r /requirement.txt --proxy=http://apac.zscaler.philips.com:9480
 CMD ["pytest", "-v", "-m", "--html=/Test_Report/test_services.html", "--self-contained-html", "/Test_Scripts/"]
