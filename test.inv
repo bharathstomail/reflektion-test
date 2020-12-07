@@ -3,5 +3,5 @@
 52.172.2.161
 
 [test:vars]
-ansible_user= 'Testadmin'
-ansible_password= 'AZ@testadmin2020!'
+ansible_user = 'Testadmin'
+ansible_pass = 'AZ@testadmin2020!'
