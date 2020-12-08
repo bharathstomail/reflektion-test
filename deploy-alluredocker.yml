@@ -50,6 +50,11 @@
         owner: adm
         group: adm
         mode: 755
+      register: path
+
+    - name: Directory location
+      debug:
+        msg: "directory location is {{ path }}"        
         
     - name: Copy files from jenkins server to remote server
       copy:
