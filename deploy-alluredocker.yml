@@ -11,6 +11,9 @@
     keep_history_latest: "30"
     external_port: "5050"
     internal_port: "5050"
+    src_path: "/var/jenkins_home/workspace/test_ansible/src/docker-compose.yml"
+    dest_path: ${PWD}/allure/
+    file: docker-compose.yml
   
   tasks:
     
@@ -40,8 +43,25 @@
     - name: Pull Allure docker image
       shell: docker pull {{allure_image_name}}
 
+    - name: Create target directory
+      file:
+        path: ${PWD}/allure
+        state: directory
+        owner: adm
+        group: adm
+        mode: 755
+        
+    - name: Copy files from jenkins server to remote server
+      copy:
+        remote_src: true
+        src: "{{ src_path }}"
+        dest: "{{ dest_path }}//{{ file }}"
+        mode: 755        
+
     # Creates the allure container defined by the variable
-    - docker_service:
-        project_src: src
-        build: no
-      register: output
+    - name: Spin up the allure docker container
+      become: yes
+      shell: docker-compose up -d allure allure-ui
+      args:
+        chdir: '{{ dest_path }}'
+      ignore_errors: true
