@@ -1,8 +1,17 @@
 ---
 - hosts: test
   become: True
-  tasks:
+
+  vars:
+  allure_image_name: frankescobar/allure-docker-service:latest
+  allure_container_name: alluredocker
+  allure_project_path: /app/projects
+  check_result_every_second: NONE
+  keep_history_flag: 1
+  keep_history_latest: 30
   
+  tasks:
+    
     - name: Install docker-py python module
       pip:
         name: docker-py
@@ -18,23 +27,21 @@
         name: docker
         state: started
         enabled: yes
-        
-    - name: Pull Allure Docker image
-      docker_image:
-        name: frankescobar/allure-docker-service:latest
-        source: pull
 
-    # Creates the number of containers defined by the variable create_containers, using values from vars file
+    - name: Pull Allure docker image
+      shell: docker pull {{allure_image_name}}
+
+    # Creates the allure container defined by the variable
     - name: Start the Allure container
       docker_container:
         name: alluredocker
-        image: frankescobar/allure-docker-service:latest
+        image: "{{ allure_image_name }}"
         env:
-            CHECK_RESULTS_EVERY_SECONDS: NONE
-            KEEP_HISTORY: 1
-            KEEP_HISTORY_LATEST: 25
+            CHECK_RESULTS_EVERY_SECONDS: "{{ check_result_every_second }}"
+            KEEP_HISTORY: "{{ keep_history_flag }}"
+            KEEP_HISTORY_LATEST: "{{ keep_history_latest }}"
         state: started
         volumes:
-          - ${PWD}/projects:/app/projects       
+          - ${PWD}/projects:"{{ allure_project_path }}"       
         published_ports:
           - 0.0.0.0:5050:5050
