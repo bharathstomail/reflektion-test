@@ -44,6 +44,7 @@
           KEEP_HISTORY: "{{ keep_history_flag }}"
           KEEP_HISTORY_LATEST: "{{ keep_history_latest }}"
         state: started
+        pull: always
         volumes:
           - ${PWD}/projects:"{{ allure_project_path }}"       
         ports:
