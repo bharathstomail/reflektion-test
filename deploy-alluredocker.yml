@@ -48,4 +48,4 @@
         volumes:
           - ${PWD}/projects:"{{ allure_project_path }}"       
         ports:
-          - "{{ external_port }}":"{{ internal_port }}"
+          - "{{ external_port }}: {{ internal_port }}"
