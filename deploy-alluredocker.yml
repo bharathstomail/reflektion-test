@@ -40,6 +40,6 @@
 
     # Creates the allure container defined by the variable
     - docker_service:
-        project_src: compose
+        project_src: src
         build: no
       register: output
