@@ -15,12 +15,12 @@
   tasks:
     
     - name: Install docker-py python module
-      pip3:
+      pip:
         name: docker-py
         state: present  
 
     - name: Install dependencies
-      pip3: name={{ item }} state=present
+      pip: name={{ item }} state=present
       with_items:
         - urlparser
         - docker
@@ -30,7 +30,7 @@
         - docker-py
         - urllib3
         - requests
-        
+
     - name: start docker
       service:
         name: docker
