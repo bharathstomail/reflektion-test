@@ -11,7 +11,7 @@
     keep_history_latest: "30"
     external_port: "5050"
     internal_port: "5050"
-    src_path: "docker-compose.yml"
+    src_path: "${env.WORKSPACE}/docker-compose.yml"
     dest_path: ${PWD}/allure
     file: docker-compose.yml
   
@@ -55,6 +55,10 @@
     - name: Directory location
       debug:
         msg: "directory location is {{ path }}"        
+        
+    - name: workspace location
+      debug:
+        msg: "workspace location is {{ src_path }}"
         
     - name: Copy files from jenkins server to remote server
       copy:
