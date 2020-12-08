@@ -7,8 +7,10 @@
     allure_container_name: alluredocker
     allure_project_path: /app/projects
     check_result_every_second: NONE
-    keep_history_flag: 1
-    keep_history_latest: 30
+    keep_history_flag: "1"
+    keep_history_latest: "30"
+    external_port: "5050"
+    internal_port: "5050"
   
   tasks:
     
@@ -44,5 +46,5 @@
         state: started
         volumes:
           - ${PWD}/projects:"{{ allure_project_path }}"       
-        published_ports:
-          - 0.0.0.0:5050:5050
+        ports:
+          - 0.0.0.0:"{{ external_port }}":"{{ internal_port }}"
