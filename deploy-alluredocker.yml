@@ -28,6 +28,8 @@
         - PyYAML
         - docker-compose
         - docker-py
+        - urllib3
+        - requests
         
     - name: start docker
       service:
