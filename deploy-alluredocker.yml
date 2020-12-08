@@ -11,7 +11,7 @@
     keep_history_latest: "30"
     external_port: "5050"
     internal_port: "5050"
-    src_path: "${env.WORKSPACE}/docker-compose.yml"
+    src_path: ${env.WORKSPACE}/docker-compose.yml
     dest_path: ${PWD}/allure
     file: docker-compose.yml
   
