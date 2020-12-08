@@ -30,9 +30,9 @@
         name: alluredocker
         image: frankescobar/allure-docker-service:latest
         env:
-            CHECK_RESULTS_EVERY_SECONDS: "NONE"
-            KEEP_HISTORY: "1"
-            KEEP_HISTORY_LATEST: "25"
+            CHECK_RESULTS_EVERY_SECONDS: NONE
+            KEEP_HISTORY: 1
+            KEEP_HISTORY_LATEST: 25
         state: started
         volumes:
           - ${PWD}/projects:/app/projects       
