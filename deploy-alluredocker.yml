@@ -11,8 +11,8 @@
     keep_history_latest: "30"
     external_port: "5050"
     internal_port: "5050"
-    src_path: "/var/jenkins_home/workspace/test_ansible/src/docker-compose.yml"
-    dest_path: ${PWD}/allure/
+    src_path: "/var/jenkins_home/workspace/test_ansible/docker-compose.yml"
+    dest_path: ${PWD}/allure
     file: docker-compose.yml
   
   tasks:
