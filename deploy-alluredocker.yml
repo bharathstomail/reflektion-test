@@ -21,6 +21,7 @@
       pip: name={{ item }} state=present
       with_items:
         - urlparser
+        - docker
         
     - name: start docker
       service:
