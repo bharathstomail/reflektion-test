@@ -3,12 +3,12 @@
   become: True
 
   vars:
-  allure_image_name: frankescobar/allure-docker-service:latest
-  allure_container_name: alluredocker
-  allure_project_path: /app/projects
-  check_result_every_second: NONE
-  keep_history_flag: 1
-  keep_history_latest: 30
+    allure_image_name: frankescobar/allure-docker-service:latest
+    allure_container_name: alluredocker
+    allure_project_path: /app/projects
+    check_result_every_second: NONE
+    keep_history_flag: 1
+    keep_history_latest: 30
   
   tasks:
     
