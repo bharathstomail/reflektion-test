@@ -39,7 +39,8 @@
       shell: docker pull {{allure_image_name}}
 
     # Creates the allure container defined by the variable
-    - community.general.docker_compose:
+    - name: Start the Allure container 
+      community.general.docker_compose:
         project_name: allure-docker-service
         definition:
           version: '3'
