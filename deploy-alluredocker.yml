@@ -36,7 +36,7 @@
 
     # Creates the allure container defined by the variable
     - name: Start the Allure container
-      docker_container:
+      docker:
         name: alluredocker
         image: "{{ allure_image_name }}"
         env:
