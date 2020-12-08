@@ -1,7 +1,7 @@
 ---
 [test]
-23.99.84.238
+52.172.2.161
 
 [test:vars]
 ansible_user = 'Testadmin'
-ansible_ssh_private_key_file = /root/.ssh/authorized_keys
+ansible_password = 'AZ@testadmin2020!'
