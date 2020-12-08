@@ -34,14 +34,14 @@
     # Creates the allure container defined by the variable
     - name: Start the Allure container
       docker_container:
-        name: alluredocker
-        image: "{{ allure_image_name }}"
-        env:
+         name: alluredocker
+         image: "{{ allure_image_name }}"
+         env:
             CHECK_RESULTS_EVERY_SECONDS: "{{ check_result_every_second }}"
             KEEP_HISTORY: "{{ keep_history_flag }}"
             KEEP_HISTORY_LATEST: "{{ keep_history_latest }}"
-        state: started
-        volumes:
-          - ${PWD}/projects:"{{ allure_project_path }}"       
-        published_ports:
-          - 0.0.0.0:5050:5050
+         state: started
+         volumes:
+           - ${PWD}/projects:"{{ allure_project_path }}"       
+         published_ports:
+           - 0.0.0.0:5050:5050
