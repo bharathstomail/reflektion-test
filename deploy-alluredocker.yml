@@ -2,10 +2,6 @@
 - hosts: test
   become: True
   tasks:
-    - name: Install docker
-      yum:
-        name: docker
-        state: present
     - name: start docker
       service:
         name: docker
