@@ -1,6 +1,6 @@
 ---
 [test]
-23.99.84.238
+52.172.2.161
 
 [test:vars]
 ansible_user = 'testadmin'
