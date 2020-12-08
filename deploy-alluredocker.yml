@@ -24,6 +24,10 @@
       with_items:
         - urlparser
         - docker
+        - docker-api
+        - PyYAML
+        - docker-compose
+        - docker-py
         
     - name: start docker
       service:
