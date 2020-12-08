@@ -39,22 +39,7 @@
       shell: docker pull {{allure_image_name}}
 
     # Creates the allure container defined by the variable
-    - name: Start the Allure container 
-      community.general.docker_compose:
-        project_name: allure-docker-service
-        definition:
-          version: '3'
-          services:
-            allure:
-              image: "frankescobar/allure-docker-service:latest"
-              environment:
-                CHECK_RESULTS_EVERY_SECONDS: "{{ check_result_every_second }}"
-                KEEP_HISTORY: "{{ keep_history_flag }}"
-                KEEP_HISTORY_LATEST: "{{ keep_history_latest }}"              
-              volumes:
-                - ${PWD}/projects:"{{ allure_project_path }}"
-              ports:
-                - "5050:5050"
-              depends_on:
-                - db
+    - docker_service:
+        project_src: compose
+        build: no
       register: output
