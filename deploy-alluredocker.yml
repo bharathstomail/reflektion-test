@@ -30,6 +30,7 @@
         - docker-py
         - urllib3
         - requests
+        - urlparse
         
     - name: start docker
       service:
