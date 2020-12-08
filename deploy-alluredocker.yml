@@ -10,13 +10,24 @@
         state: present
       with_items:
       - { name: docker, version: 2.0.0 }
-      - { name: docker-py, version: 1.10.6 }    
+      - { name: docker-py, version: 1.10.6 } 
       
+    - name: Install python pip
+      yum:
+        name: python-pip
+        state: present 
+        
+    - name: Install docker-py python module
+      pip:
+        name: docker-py
+        state: present  
+        
     - name: start docker
       service:
         name: docker
         state: started
         enabled: yes
+        
     - name: Start the container
       docker_container:
         name: alluredocker
