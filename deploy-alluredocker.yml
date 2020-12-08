@@ -62,7 +62,7 @@
         
     - name: Copy files from jenkins server to remote server
       copy:
-        remote_src: true
+        remote_src: no
         src: "{{ src_path }}"
         dest: "{{ dest_path }}//{{ file }}"
         mode: 755        
