@@ -19,10 +19,16 @@
         state: started
         enabled: yes
         
-    - name: Start the container
+    - name: Pull Allure Docker image
+      docker_image:
+        name: "frankescobar/allure-docker-service:latest"
+        source: pull
+
+    # Creates the number of containers defined by the variable create_containers, using values from vars file
+    - name: Start the Allure container
       docker_container:
         name: alluredocker
-        image: "frankescobar/allure-docker-service:latest"
+        image: frankescobar/allure-docker-service:latest
         env:
             CHECK_RESULTS_EVERY_SECONDS: "NONE"
             KEEP_HISTORY: "1"
