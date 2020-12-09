@@ -77,7 +77,7 @@
 
     # Creates the allure container defined by the variable
     - name: Spin up the allure docker container
-      command: docker-compose -f "{{ dest_path }}" up -d allure allure-ui
+      command: 'docker-compose -f {{ dest_path }}/docker-compose.yml up -d allure allure-ui'
       args:
         chdir: '{{ dest_path }}'
     #ignore_errors: true
