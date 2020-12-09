@@ -1,6 +1,6 @@
 ---
 - hosts: test
-  become: True
+  #become: True
 
   vars:
     allure_image_name: frankescobar/allure-docker-service:latest
