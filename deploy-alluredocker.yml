@@ -1,6 +1,7 @@
 ---
 - hosts: test
   #become: True
+  become_user: testadmin
 
   vars:
     allure_image_name: frankescobar/allure-docker-service:latest
@@ -39,6 +40,11 @@
         name: docker
         state: started
         enabled: yes
+
+    - name: Pull Allure Docker image
+      docker_image:
+        name: "{{allure_image_name}}"
+        source: pull
 
     - name: Pull Allure docker image
       shell: docker pull {{allure_image_name}}
@@ -79,5 +85,5 @@
     # Creates the allure container defined by the variable
     - name: Spin up the allure docker container
       become: True
-      command: 'docker-compose -f {{ dest_path }}/docker-compose.yml up -d allure allure-ui'
+      command: docker-compose -f {{ dest_path }}/docker-compose.yml up -d allure allure-ui
     #ignore_errors: true
