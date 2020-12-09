@@ -52,7 +52,7 @@
       copy:
         remote_src: no
         src: "{{ src_path }}"
-        dest: "{{ dest_path }}/{{ file }}"
+        dest: "{{ dest_path }}"
         mode: 0755
 
     - name: Check if docker-compose is installed
