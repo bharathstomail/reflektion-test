@@ -47,8 +47,8 @@
       file:
         path: ${PWD}/allure
         state: directory
-        owner: adm
-        group: adm
+        # owner: adm
+        # group: adm
         mode: 755
       register: path
 
@@ -64,7 +64,7 @@
       copy:
         remote_src: no
         src: "{{ src_path }}"
-        dest: "{{ dest_path }}//{{ file }}"
+        dest: "{{ dest_path }}/{{ file }}"
         mode: 755        
 
     - name: Check if docker-compose is installed
