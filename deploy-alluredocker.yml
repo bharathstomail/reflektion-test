@@ -69,5 +69,5 @@
       #command: docker-compose -f {{ dest_path }}/{{ file }} up -d allure allure-ui
       command: docker-compose up -d allure allure-ui
       args:
-        chdir: '{{ dest_path }}/{{ file }}'
+        chdir: '{{ dest_path }}'
     #ignore_errors: true
