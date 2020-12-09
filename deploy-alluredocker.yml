@@ -13,7 +13,7 @@
     external_port: "5050"
     internal_port: "5050"
     src_path: /opt/allure
-    dest_path: ${PWD}/allure
+    dest_path: ${PWD}
     file: docker-compose.yml
   
   tasks:
