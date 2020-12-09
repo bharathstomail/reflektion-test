@@ -67,14 +67,6 @@
         dest: "{{ dest_path }}//{{ file }}"
         mode: 755        
 
-    - name: Check current docker-compose version.
-      command: docker-compose --version
-      register: docker_compose_current_version
-      changed_when: false
-      failed_when: false
-
-    - debug: msg="{{ docker_compose_current_version.stdout }}"
-
     - name: Check if docker-compose is installed
       shell: command -v docker-compose >/dev/null 2>&1
       register: is_docker_compose_install
@@ -82,6 +74,14 @@
       ignore_errors: yes
 
     - debug: msg="{{ is_docker_compose_install.rc }}" # it returns rc 0 if present
+
+    - name: Check current docker-compose version.
+      command: docker-compose --version
+      register: docker_compose_current_version
+      changed_when: false
+      failed_when: false
+
+    - debug: msg="{{ docker_compose_current_version.stdout }}"
 
     # Creates the allure container defined by the variable
     - name: Spin up the allure docker container
