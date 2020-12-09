@@ -12,8 +12,8 @@
     keep_history_latest: "30"
     external_port: "5050"
     internal_port: "5050"
-    src_path: /opt/allure/docker-compose.yml
-    dest_path: ${PWD}/allure
+    src_path: /opt/allure
+    dest_path: ${PWD}/
     file: docker-compose.yml
   
   tasks:
@@ -41,23 +41,8 @@
         state: started
         enabled: yes
 
-    - name: Pull Allure Docker image
-      docker_image:
-        name: "{{allure_image_name}}"
-        source: pull
-
     - name: Pull Allure docker image
       shell: docker pull {{allure_image_name}}
-
-    - name: Create target directory
-      # become: True
-      file:
-        path: ${PWD}/allure
-        state: directory
-        # owner: adm
-        # group: adm
-        mode: 755
-      register: path
 
     - name: Directory location
       debug:
@@ -72,7 +57,7 @@
         remote_src: no
         src: "{{ src_path }}"
         dest: "{{ dest_path }}/{{ file }}"
-        mode: 755        
+        mode: 0755        
 
     - name: Check if docker-compose is installed
       shell: command -v docker-compose >/dev/null 2>&1
