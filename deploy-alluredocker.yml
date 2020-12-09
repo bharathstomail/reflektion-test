@@ -53,7 +53,7 @@
         remote_src: no
         src: "{{ src_path }}"
         dest: "{{ dest_path }}/{{ file }}"
-        mode: 0755        
+        mode: 0644        
 
     - name: Check if docker-compose is installed
       shell: command -v docker-compose >/dev/null 2>&1
