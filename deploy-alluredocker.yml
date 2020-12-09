@@ -75,14 +75,6 @@
 
     - debug: msg="{{ is_docker_compose_install.rc }}" # it returns rc 0 if present
 
-    - name: Check current docker-compose version.
-      command: docker-compose --version
-      register: docker_compose_current_version
-      changed_when: false
-      failed_when: false
-
-    - debug: msg="{{ docker_compose_current_version.stdout }}"
-
     # Creates the allure container defined by the variable
     - name: Spin up the allure docker container
       command: docker-compose up -d allure allure-ui
