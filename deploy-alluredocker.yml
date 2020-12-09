@@ -75,9 +75,17 @@
 
     - debug: msg="{{ docker_compose_current_version.stdout }}"
 
+    - name: Check if docker-compose is installed
+      shell: command -v docker-compose >/dev/null 2>&1
+      register: is_docker_compose_install
+      failed_when: is_docker_compose_install is not defined
+      ignore_errors: yes
+
+    - debug: msg="{{ is_docker_compose_install.rc }}" # it returns rc 0 if present
+
     # Creates the allure container defined by the variable
     - name: Spin up the allure docker container
-      shell: docker-compose up -d allure allure-ui
+      command: docker-compose up -d allure allure-ui
       args:
         chdir: '{{ dest_path }}'
       ignore_errors: true
