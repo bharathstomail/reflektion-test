@@ -80,4 +80,4 @@
       command: docker-compose up -d allure allure-ui
       args:
         chdir: '{{ dest_path }}'
-      ignore_errors: true
+    #ignore_errors: true
