@@ -44,7 +44,7 @@
       shell: docker pull {{allure_image_name}}
 
     - name: Create target directory
-      become: True
+      # become: True
       file:
         path: ${PWD}/allure
         state: directory
@@ -77,7 +77,7 @@
     - debug: msg="{{ is_docker_compose_install.rc }}" # it returns rc 0 if present
 
     # Creates the allure container defined by the variable
-    - name: Spin up the allure docker container
+    - name: Spin up the allure docker container 
       command: 'docker-compose -f {{ dest_path }}/docker-compose.yml up -d allure allure-ui'
       args:
         chdir: '{{ dest_path }}'
