@@ -13,7 +13,7 @@
     external_port: "5050"
     internal_port: "5050"
     src_path: /opt/allure
-    dest_path: ${PWD}/
+    dest_path: ${PWD}/allure
     file: docker-compose.yml
   
   tasks:
@@ -44,10 +44,6 @@
     - name: Pull Allure docker image
       shell: docker pull {{allure_image_name}}
 
-    - name: Directory location
-      debug:
-        msg: "directory location is {{ path }}"        
-        
     - name: workspace location
       debug:
         msg: "workspace location is {{ src_path }}"
@@ -69,6 +65,6 @@
 
     # Creates the allure container defined by the variable
     - name: Spin up the allure docker container
-      become: True
+      # become: True
       command: docker-compose -f {{ dest_path }}/docker-compose.yml up -d allure allure-ui
     #ignore_errors: true
