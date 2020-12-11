@@ -70,6 +70,13 @@
       args:
         chdir: '{{ dest_path }}/allure'
 
+    # Remove Allure docker-compose file from the directory
+    - name: Remove Allure docker-compose file from the path
+	    remote_src: no
+      file:
+        state: absent
+        path: "{{ src_path }}/"
+
     - name: Copy project tar file from jenkins server to remote server
       copy:
         remote_src: no
@@ -85,6 +92,7 @@
     
     # Remove project image tar file from the directory
     - name: Remove project image tar file from the path
+	    remote_src: no
       file:
         state: absent
         path: "{{ project_src_path }}/" 
