@@ -72,8 +72,8 @@
 
     # Remove Allure docker-compose file from the directory
     - name: Remove Allure docker-compose file from the path
-	    remote_src: no
       file:
+        remote_src: no      
         state: absent
         path: "{{ src_path }}/"
 
@@ -92,7 +92,7 @@
     
     # Remove project image tar file from the directory
     - name: Remove project image tar file from the path
-	    remote_src: no
       file:
+        remote_src: no      
         state: absent
         path: "{{ project_src_path }}/" 
