@@ -68,7 +68,7 @@
     - name: Spin up the allure docker container
       command: docker-compose up -d allure allure-ui
       args:
-        chdir: '{{ dest_path }}/allure'
+        chdir: '{{ dest_path }}/allure/'
 
     # Remove Allure docker-compose file from the directory
     - name: Remove Allure docker-compose file from the path
