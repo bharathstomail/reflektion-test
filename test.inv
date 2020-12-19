@@ -1,7 +1,7 @@
 ---
 [test]
-
+23.99.84.238
 
 [test:vars]
-ansible_user =
-ansible_password = 
+ansible_user = testadmin
+ansible_password = AZ@testadmin2020!
