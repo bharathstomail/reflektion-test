@@ -15,14 +15,14 @@ class CommonClass:
         self.config_dir = str(Path(__file__).parent.parent)
 
     def get_config(self, file_path):
-        # config_dir = str(Path(__file__).parent.parent)
+
         path_arg = self.config_dir + file_path
         with open(path_arg) as o1:
             data_json = json.loads(o1.read())
         return data_json
 
     def get_attribute(self, file_path):
-        # config_dir = str(Path(__file__).parent.parent)
+
         path_arg = self.config_dir + file_path
         with open(path_arg) as o1:
             data_json = json.loads(o1.read())
