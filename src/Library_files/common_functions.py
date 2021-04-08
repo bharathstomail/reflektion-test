@@ -33,7 +33,7 @@ class CommonClass:
 
     def get_service(self, url_arg):
         print("header details : ", self.header)
-        response = requests.get(url_arg, headers=self.header, verify=False)
+        response = requests.get(url_arg, headers=self.header, verify=True)
         return response
 
     def post_service(self, url_arg, file_arg):
@@ -41,7 +41,7 @@ class CommonClass:
         with open(self.config_dir + file_arg, 'rb') as o1:
             payload_1 = json.load(o1)
 
-        response = requests.post(url_arg, json=payload_1, headers=self.header, verify=False)
+        response = requests.post(url_arg, json=payload_1, headers=self.header, verify=True)
 
         return response
 
@@ -52,7 +52,7 @@ class CommonClass:
 
         header = {"key": "Content-Type", "value": "application/json", "charset": "UTF-8"}
         
-        response = requests.put(url_arg, data=payload, headers=header, verify=False)
+        response = requests.put(url_arg, data=payload, headers=header, verify=True)
 
         return response
 
