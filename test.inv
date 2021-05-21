@@ -1,6 +1,6 @@
 ---
 [test]
-10.253.64.47
+CNLCSDNDLAPM01
 
 [test:vars]
 ansible_user = apm
