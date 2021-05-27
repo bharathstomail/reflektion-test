@@ -20,11 +20,13 @@
   tasks:
     
     - name: Install docker-py python module
+      become: yes
       pip:
         name: docker-py
         state: present  
 
     - name: Install dependencies
+      become: yes
       pip: name={{ item }} state=present
       with_items:
         - urlparser
@@ -37,19 +39,23 @@
         - requests
 
     - name: start docker
+      become: yes
       service:
         name: docker
         state: started
         enabled: yes
 
     - name: Pull Allure docker image
+      become: yes
       shell: docker pull {{allure_image_name}}
 
     - name: workspace location
+      become: yes
       debug:
         msg: "workspace location is {{ src_path }}"
         
     - name: Copy files from jenkins server to remote server
+      become: yes
       copy:
         remote_src: no
         src: "{{ src_path }}"
@@ -57,6 +63,7 @@
         mode: 0755
 
     - name: Check if docker-compose is installed
+      become: yes
       shell: command -v docker-compose >/dev/null 2>&1
       register: is_docker_compose_install
       failed_when: is_docker_compose_install is not defined
@@ -66,18 +73,21 @@
 
     # Creates the allure container defined by the variable
     - name: Spin up the allure docker container
+      become: yes
       command: docker-compose up -d allure allure-ui
       args:
         chdir: '{{ dest_path }}/allure/'
 
     # Remove Allure docker-compose file from the directory
     - name: Remove Allure docker-compose file from the path
+      become: yes
       file:
         remote_src: no      
         state: absent
         path: "{{ src_path }}/"
 
     - name: Copy project tar file from jenkins server to remote server
+      become: yes
       copy:
         remote_src: no
         src: "{{ project_src_path }}"
@@ -86,12 +96,14 @@
 
     # Load the .tar file of the project 
     - name: build the image
+      become: yes
       command: docker load --input "{{ project_image_name }}"
       args:
         chdir: '{{ dest_path }}/docker_images'
     
     # Remove project image tar file from the directory
     - name: Remove project image tar file from the path
+      become: yes
       file:
         remote_src: no      
         state: absent
