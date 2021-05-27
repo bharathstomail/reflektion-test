@@ -1,6 +1,6 @@
 ---
 - hosts: test
-  #become: True
+  become: yes
   become_user: apm
 
   vars:
@@ -19,10 +19,10 @@
   
   tasks:
     
-#    - name: Install docker-py python module
-#      pip:
-#        name: docker-py
-#        state: present  
+    - name: Install docker-py python module
+      pip:
+        name: docker-py
+        state: present  
 
     - name: Install dependencies
       pip: name={{ item }} state=present
